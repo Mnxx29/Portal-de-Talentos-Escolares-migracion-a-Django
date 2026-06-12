@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Firebase</title>
+</head>
+<body>
+    <h2>Ejercicio de formulario con Firebase</h2>
+    <p>Ingresa tu nombre y email. Después puedes mostrar o eliminar los datos.</p>
+
+    <form id="usuarioForm">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingresa tu nombre" required>
+        </div>
+        <div style="margin-top: 10px;">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Ingresa tu email" required>
+        </div>
+        <div style="margin-top: 15px;">
+            <button type="submit">Guardar</button>
+            <button type="button" id="mostrarBtn">Mostrar</button>
+            <button type="button" id="eliminarBtn">Eliminar</button>
+        </div>
+    </form>
+
+    <div id="resultado" style="margin-top: 20px; white-space: pre-wrap; color: #333;"></div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getDatabase, ref, set, get, remove } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js';
+
+        const firebaseConfig = {
+            apiKey: 'TU_API_KEY',
+            authDomain: 'TU_AUTH_DOMAIN',
+            databaseURL: 'TU_DATABASE_URL',
+            projectId: 'TU_PROJECT_ID',
+            storageBucket: 'TU_STORAGE_BUCKET',
+            messagingSenderId: 'TU_MESSAGING_SENDER_ID',
+            appId: 'TU_APP_ID'
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        async function guardarUsuario() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!nombre || !email) {
+                alert('Completa ambos campos antes de guardar.');
+                return;
+            }
+
+            const usuario = {
+                nombre,
+                email,
+                guardadoEn: new Date().toISOString()
+            };
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+
+            try {
+                await set(ref(database, 'usuario'), usuario);
+                document.getElementById('resultado').innerText = 'Datos guardados en localStorage y Firebase.';
+                document.getElementById('usuarioForm').reset();
+            } catch (error) {
+                console.error('Error guardando en Firebase:', error);
+                document.getElementById('resultado').innerText = 'Error al guardar en Firebase. Revisa la consola.';
+            }
+        }
+
+        async function mostrarUsuario() {
+            const datosLocal = localStorage.getItem('usuario');
+            let texto = datosLocal ? 'Datos en localStorage:\n' + JSON.stringify(JSON.parse(datosLocal), null, 2) : 'No hay datos en localStorage.';
+
+            try {
+                const snapshot = await get(ref(database, 'usuario'));
+                if (snapshot.exists()) {
+                    texto += '\n\nDatos en Firebase:\n' + JSON.stringify(snapshot.val(), null, 2);
+                } else {
+                    texto += '\n\nNo hay datos guardados en Firebase.';
+                }
+            } catch (error) {
+                console.error('Error leyendo de Firebase:', error);
+                texto += '\n\nError al leer datos de Firebase. Revisa la consola.';
+            }
+
+            document.getElementById('resultado').innerText = texto;
+        }
+
+        async function eliminarUsuario() {
+            localStorage.removeItem('usuario');
+            try {
+                await remove(ref(database, 'usuario'));
+                document.getElementById('resultado').innerText = 'Datos eliminados de Firebase y localStorage.';
+            } catch (error) {
+                console.error('Error eliminando en Firebase:', error);
+                document.getElementById('resultado').innerText = 'Error al eliminar datos en Firebase. Revisa la consola.';
+            }
+        }
+
+        document.getElementById('usuarioForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            guardarUsuario();
+        });
+
+        document.getElementById('mostrarBtn').addEventListener('click', mostrarUsuario);
+        document.getElementById('eliminarBtn').addEventListener('click', eliminarUsuario);
+    </script>
+</body>
+</html>
+

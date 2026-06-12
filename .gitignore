@@ -1,0 +1,22 @@
+# Entornos virtuales
+venv/
+ENV/
+env/
+.venv/
+
+# Cache de Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Base de datos local (SQLite)
+db.sqlite3
+
+# Archivos de VS Code u otros editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

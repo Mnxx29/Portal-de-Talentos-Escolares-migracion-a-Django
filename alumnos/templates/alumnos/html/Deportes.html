@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="{% static 'img/icono.ico' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Germán Aravena">
+  <meta name="description" content="Página que muestra los talentos escolares de los estudiantes del colegio.">
+  <title>Portal de Talentos Escolares</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Tipografía de Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styleBootstrap.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'index' %}">
+          Portal de Talentos
+          <img src="{% static 'img/logo.png' %}" alt="Logo" width="40" class="ms-2 rounded-circle bg-white p-1">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'musica' %}">Música</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'deportes' %}">Deportes</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'formulario_postulacion' %}">Postulación</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-banner text-white text-center d-flex align-items-center">
+      <div class="container">
+        <div class="hero-box mx-auto">
+          <h1 class="display-5 fw-bold">Portal de Talentos Escolares</h1>
+          <p class="lead mb-0">Descubriendo habilidades únicas</p>
+        </div>
+      </div>
+    </section>
+  </header>
+
+
+  <section class="contenido-principal">
+    <h3>Talentos Deportivos</h3>
+    <div>
+      <p>Este portal ha sido creado con el propósito de dar a conocer y destacar los talentos de estudiantes en
+        distintas áreas, como la música, la tecnología, el arte y otras disciplinas. A través de este sitio web, se
+        busca brindar un espacio donde los alumnos puedan mostrar sus habilidades, compartir sus logros y motivar a
+        otros a desarrollar sus propios talentos. Además, el portal permite explorar diferentes categorías y conocer en
+        detalle a cada estudiante, fomentando la creatividad, la participación y el reconocimiento dentro de la
+        comunidad escolar.</p>
+    </div>
+  </section>
+
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center mt-3">
+            <h5 class="card-title fw-bold text-primary">Benjamín Vargas</h5>
+            <p class="card-text text-muted mb-4">Destacado en fútbol escolar.</p>
+            <a href="{% url 'talento_benjaminvargas' %}" class="btn btn-outline-primary btn-sm px-4 rounded-pill">Ver perfil</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center mt-3">
+            <h5 class="card-title fw-bold text-primary">Antonia Castillo</h5>
+            <p class="card-text text-muted mb-4">Destacada en voleibol interescolar.</p>
+            <a href="{% url 'talento_antoniacastillo' %}" class="btn btn-outline-primary btn-sm px-4 rounded-pill">Ver perfil</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center mt-3">
+            <h5 class="card-title fw-bold text-primary">Lucía Fernández</h5>
+            <p class="card-text text-muted mb-4">Promesa en el tenis de mesa.</p>
+            <a href="{% url 'talento_luciafernandez' %}" class="btn btn-outline-primary btn-sm px-4 rounded-pill">Ver perfil</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center mt-3">
+            <h5 class="card-title fw-bold text-primary">Nicolás Paredes</h5>
+            <p class="card-text text-muted mb-4">Atleta campeón en velocidad.</p>
+            <a href="{% url 'talento_nicolasparedes' %}" class="btn btn-outline-primary btn-sm px-4 rounded-pill">Ver perfil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h4 class="mt-5 mb-4 text-secondary">Momentos Deportivos</h4>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card border-0 overflow-hidden shadow-sm">
+          <img src="{% static 'img/jugando futbol.webp' %}" class="card-img-top" alt="Estudiantes jugando fútbol" style="object-fit: cover; height: 300px;">
+          <div class="card-footer bg-white border-0 text-center"><small class="text-muted">Campeonato de Fútbol</small></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-0 overflow-hidden shadow-sm">
+          <img src="{% static 'img/pinpon.jpg' %}" class="card-img-top" alt="Estudiantes jugando ping-pong" style="object-fit: cover; height: 300px;">
+          <div class="card-footer bg-white border-0 text-center"><small class="text-muted">Torneo Interno de Tenis de Mesa</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="redes-sociales">
+        <a href="#" title="Instagram Oficial" class="social-icon"><i class="bi bi-instagram"></i></a>
+        <a href="#" title="Facebook Comunidad Escolar" class="social-icon"><i class="bi bi-facebook"></i></a>
+        <a href="#" title="YouTube Presentaciones" class="social-icon"><i class="bi bi-youtube"></i></a>
+        <a href="#" title="Twitter Noticias" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+    </div>
+    <p>&copy; 2026 Portal de Talentos Escolares. Todos los derechos reservados.</p>
+</footer>
+</body>
+
+</html>
+
+
