@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="GermÃ¡n Aravena">
-  <meta name="description" content="AplicaciÃ³n web interactiva de POKEMON API">
+  <meta name="author" content="Germán Aravena">
+  <meta name="description" content="Aplicación web interactiva de POKEMON API">
   <title>POKEMON API</title>
   
   <link rel="icon" type="image/png" href="{% static 'img/pokeball_favicon.png' %}">
@@ -16,10 +16,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   
   <style>
-    /* Estilos especÃ­ficos para esta pÃ¡gina */
+    /* Estilos específicos para esta página */
     body {
       background-image: url('../img/pokeball_bg.png');
-      background-size: 400px; /* TamaÃ±o del patrÃ³n de fondo */
+      background-size: 400px; /* Tamaño del patrón de fondo */
       background-repeat: repeat;
       background-attachment: fixed;
       min-height: 100vh;
@@ -97,7 +97,7 @@
       border: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* Sobrescribir colores para la temÃ¡tica */
+    /* Sobrescribir colores para la temática */
     .btn-pokemon-random {
       background: linear-gradient(45deg, #FFCB05, #F5A623); /* Amarillo Pokemon */
       border: none;
@@ -118,7 +118,7 @@
     <nav class="navbar navbar-expand-lg shadow-sm" style="background: rgba(255, 203, 5, 0.95) !important;">
       <div class="container justify-content-center">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-          <img src="{% static 'img/pokemonprincipal.png' %}" alt="Logo PokÃ©mon" style="height: 60px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">
+          <img src="{% static 'img/pokemonprincipal.png' %}" alt="Logo Pokémon" style="height: 60px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">
         </a>
       </div>
     </nav>
@@ -129,9 +129,9 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-5">
           
-          <!-- Controles de bÃºsqueda -->
+          <!-- Controles de búsqueda -->
           <div class="search-box text-center">
-            <h5 class="mb-3 fw-bold text-dark">Encuentra a tu PokÃ©mon</h5>
+            <h5 class="mb-3 fw-bold text-dark">Encuentra a tu Pokémon</h5>
             <div class="input-group mb-4">
               <input type="text" id="poke-input" class="form-control form-control-lg bg-light" placeholder="Nombre o ID..." aria-label="Nombre de Pokemon">
               <button class="btn btn-primary px-4 fw-bold" type="button" id="btn-buscar">
@@ -159,7 +159,7 @@
                 <img id="poke-img" class="poke-img" src="" alt="Pokemon">
               </div>
               <h2 id="poke-name" class="fw-bold text-uppercase mb-1" style="color: #2c3e50; font-size: 2rem;"></h2>
-              <p class="text-muted fw-bold mb-3 fs-5">NÂº <span id="poke-id"></span></p>
+              <p class="text-muted fw-bold mb-3 fs-5">Nº <span id="poke-id"></span></p>
               
               <div id="poke-types" class="mb-4 d-flex justify-content-center flex-wrap gap-2">
                 <!-- Badges de tipos -->
@@ -186,7 +186,7 @@
           <!-- Mensaje de Error -->
           <div id="error-msg" class="alert alert-danger d-none text-center shadow-sm border-0 rounded-4 p-4" role="alert">
             <i class="bi bi-exclamation-octagon-fill fs-1 d-block mb-2 text-danger"></i>
-            <strong class="fs-5">Â¡PokÃ©mon no encontrado!</strong><br>Intenta con otro nombre o ID vÃ¡lido.
+            <strong class="fs-5">¡Pokémon no encontrado!</strong><br>Intenta con otro nombre o ID válido.
           </div>
 
         </div>
@@ -196,11 +196,11 @@
 
   <footer class="mt-auto py-4" style="background: rgba(59, 76, 202, 0.95);">
     <div class="redes-sociales">
-        <a href="#" title="Comunidad PokÃ©mon" class="social-icon"><i class="bi bi-globe"></i></a>
+        <a href="#" title="Comunidad Pokémon" class="social-icon"><i class="bi bi-globe"></i></a>
         <a href="#" title="Foro Entrenadores" class="social-icon"><i class="bi bi-chat-square-text-fill"></i></a>
         <a href="#" title="Torneos Oficiales" class="social-icon"><i class="bi bi-trophy-fill"></i></a>
     </div>
-    <p class="text-center text-white-50 mb-0 mt-3">&copy; 2026 POKEMON API. AplicaciÃ³n de uso exclusivo.</p>
+    <p class="text-center text-white-50 mb-0 mt-3">&copy; 2026 POKEMON API. Aplicación de uso exclusivo.</p>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -229,7 +229,7 @@
         let imgUrl = data.sprites.other['official-artwork'].front_default || data.sprites.front_default;
         $('#poke-img').attr('src', imgUrl).hide().fadeIn(500);
         
-        // Peso (convertir hectogramos a kg) y Altura (decÃ­metros a m)
+        // Peso (convertir hectogramos a kg) y Altura (decímetros a m)
         $('#poke-weight').text((data.weight / 10).toFixed(1) + ' kg');
         $('#poke-height').text((data.height / 10).toFixed(1) + ' m');
         
@@ -245,7 +245,7 @@
         let abilities = data.abilities.map(a => a.ability.name.replace('-', ' ')).join(', ');
         $('#poke-abilities').text(abilities);
         
-        // Mostrar tarjeta con animaciÃ³n
+        // Mostrar tarjeta con animación
         $('#resultado-pokemon').removeClass('d-none').hide().fadeIn(400);
       }
 
@@ -279,7 +279,7 @@
         });
       }
 
-      // Buscar por botÃ³n
+      // Buscar por botón
       $("#btn-buscar").click(function() {
         let val = $("#poke-input").val();
         buscarPokemonAPI(val);
@@ -295,7 +295,7 @@
 
       // Pokemon Aleatorio
       $("#btn-aleatorio").click(function() {
-        // AnimaciÃ³n de carga para el botÃ³n aleatorio
+        // Animación de carga para el botón aleatorio
         let btn = $(this);
         let originalText = btn.html();
         btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> BUSCANDO...');

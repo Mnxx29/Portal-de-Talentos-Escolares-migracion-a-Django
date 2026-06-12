@@ -5,8 +5,8 @@
     <link rel="icon" type="image/x-icon" href="{% static 'img/icono.ico' %}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="GermÃ¡n Aravena">
-  <meta name="description" content="Formulario de postulaciÃ³n a talentos escolares">
+  <meta name="author" content="Germán Aravena">
+  <meta name="description" content="Formulario de postulación a talentos escolares">
   <title>Portal de Talentos Escolares</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -36,9 +36,9 @@
         <div class="collapse navbar-collapse" id="menuPrincipal">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'musica' %}">MÃºsica</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'musica' %}">Música</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'deportes' %}">Deportes</a></li>
-            <li class="nav-item"><a class="nav-link active" href="{% url 'formulario_postulacion' %}">PostulaciÃ³n</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'formulario_postulacion' %}">Postulación</a></li>
           </ul>
         </div>
       </div>
@@ -48,7 +48,7 @@
       <div class="container">
         <div class="hero-box mx-auto">
           <h1 class="display-5 fw-bold">Portal de Talentos Escolares</h1>
-          <p class="lead mb-0">Descubriendo habilidades Ãºnicas</p>
+          <p class="lead mb-0">Descubriendo habilidades únicas</p>
         </div>
       </div>
     </section>
@@ -60,8 +60,8 @@
   <div class="formulario-container">
     <div class="formulario-header">
       <img src="{% static 'img/logo.png' %}" alt="Logo Colegio" class="formulario-logo">
-      <h2>Formulario de PostulaciÃ³n</h2>
-      <p>Postula tu talento y sÃ© parte de nuestra comunidad escolar.</p>
+      <h2>Formulario de Postulación</h2>
+      <p>Postula tu talento y sé parte de nuestra comunidad escolar.</p>
     </div>
 
     <form id="formularioPostulacion" action="" method="post" enctype="multipart/form-data" name="Formulario" class="formulario-dos-columnas">
@@ -79,8 +79,8 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Ingrese su email">
         
-        <label for="telefono">TelÃ©fono:</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su telÃ©fono">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su teléfono">
       </fieldset>
 
       <fieldset>
@@ -102,11 +102,11 @@
         </select>
         
 
-        <label>Ãrea de InterÃ©s:</label>
+        <label>Área de Interés:</label>
         <div class="formulario-radio-grupo">
           <label class="radio-label">
             <input type="radio" name="area_interes" value="musica">
-            <span>MÃºsica</span>
+            <span>Música</span>
           </label>
           <label class="radio-label">
             <input type="radio" name="area_interes" value="deportes">
@@ -114,8 +114,8 @@
           </label>
         </div>
         
-        <label for="especialidad">Especialidad o Talento especÃ­fico:</label>
-        <input type="text" id="especialidad" name="especialidad" placeholder="Ej. Flauta, FÃºtbol, Canto...">
+        <label for="especialidad">Especialidad o Talento específico:</label>
+        <input type="text" id="especialidad" name="especialidad" placeholder="Ej. Flauta, Fútbol, Canto...">
         
         <div class="formulario-botones">
           <input type="reset" value="Limpiar" class="btn-limpiar">
